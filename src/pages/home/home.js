@@ -35,7 +35,7 @@ export default function Home() {
     return (
         <CssVarsProvider>
 
-            <VideoBackground autoPlay loop muted>
+            <VideoBackground autoPlay loop muted playsInline>
                 <source src="/videos/fishes.mp4" type="video/mp4"/>
                 Your browser does not support the video tag.
             </VideoBackground>
