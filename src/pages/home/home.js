@@ -3,8 +3,9 @@ import Button from '@mui/joy/Button';
 import {Alert, AspectRatio, CssVarsProvider, IconButton, LinearProgress, Sheet, styled} from "@mui/joy";
 import Typography from '@mui/joy/Typography';
 import Close from '@mui/icons-material/Close';
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {Check} from "@mui/icons-material";
+import { useNavigate } from 'react-router-dom'; // Добавляем useHistory для навигации
 
 const CenteredContainer = styled('div')({
     display: 'flex',
@@ -29,9 +30,19 @@ const VideoBackground = styled('video')({
 
 export default function Home() {
     const [showAlert, setShowAlert] = useState(false);
+    const navigate = useNavigate(); // Используем хук useHistory
+
     const handleClose = () => {
         setShowAlert(false);
     };
+    const handleAlertShow = () => {
+        setShowAlert(true);
+        setTimeout(() => {
+            navigate('/game'); // Переход на маршрут '/games' через 1.5 секунды
+        }, 1500);
+    };
+
+
     return (
         <CssVarsProvider>
 
@@ -120,7 +131,7 @@ export default function Home() {
                             Сохрани жизнь рыбкам, ведь рыбки ничего плохого тебе не делали...
                         </Typography>
                     </div>
-                    <Button sx={{mt: 1}} onClick={() => setShowAlert(true)}>
+                    <Button sx={{mt: 1}} onClick={handleAlertShow}>
                         Попробовать
                     </Button>
 
